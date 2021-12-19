@@ -1,6 +1,6 @@
 {
-  "name": "bot",
-  "version": "0.0.0",
+  "name": "super-octo-eureka",
+  "version": "0.0.1",
   "engines": {
     "node": "16.x"
   },
