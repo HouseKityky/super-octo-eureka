@@ -11,3 +11,15 @@ test('Покрывала нет', async ({ page }) => {
   await expect(locator).toBeVisible();
 
 });
+
+// npx playwright test -g "Скамейки нет" --project="FireFox Desktop Headed"
+test('Скамейки нет', async ({ page }) => {
+  await page.goto(
+      'https://www.ikea.com/ua/uk/p/hemnes-hemnes-lavka-biliy-50223625/'
+  );
+
+  const locator = page.locator('text=Немає в наявності');
+
+  await expect(locator).toBeVisible();
+
+});
