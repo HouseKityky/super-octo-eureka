@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 import { ProductPage } from "./product-page";
 
 // npx playwright test -g "Покрывала нет" --project="FireFox Desktop Headed"
