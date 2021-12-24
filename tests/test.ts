@@ -23,3 +23,15 @@ test('Скамейки нет', async ({ page }) => {
   await expect(locator).toBeVisible();
 
 });
+
+// npx playwright test -g "Скамейки нет" --project="FireFox Desktop Headed"
+test('Коврика нет', async ({ page }) => {
+  await page.goto(
+      'https://www.ikea.com/ua/uk/p/baggmuck-baggmukk-kilimok-dlya-vzuttya-dlya-primishchennya-vulici-siriy-60329711/'
+  );
+
+  const locator = page.locator('text=Немає в наявності');
+
+  await expect(locator).toBeVisible();
+
+});
