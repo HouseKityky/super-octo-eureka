@@ -5,6 +5,7 @@ const config: PlaywrightTestConfig = {
         {
             name: 'FireFox Desktop',
             use: {
+                baseURL: 'https://www.ikea.com',
                 browserName: 'firefox',
                 viewport: { width: 1200, height: 750 },
             }
@@ -12,6 +13,7 @@ const config: PlaywrightTestConfig = {
         {
             name: 'FireFox Desktop Headed',
             use: {
+                baseURL: 'https://www.ikea.com',
                 headless: false,
                 browserName: 'firefox',
                 viewport: { width: 1200, height: 750 },
