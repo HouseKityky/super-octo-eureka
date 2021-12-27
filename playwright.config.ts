@@ -23,7 +23,7 @@ const config: PlaywrightTestConfig = {
             }
         }
     ],
-    reporter: process.env.CI ? 'github' : 'list',
+    reporter: [[process.env.CI ? 'github' : 'list'], ['json', { outputFile: 'results.json' }]],
     testDir: './tests',
 }
 export default config;
