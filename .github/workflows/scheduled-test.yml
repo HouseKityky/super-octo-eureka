@@ -2,9 +2,6 @@
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
 name: Scheduled test
-env:
-  TELEGRAM_BOT_API: ${{ secrets.TELEGRAM_BOT_API }}
-  CHAT_ID: ${{ secrets.CHAT_ID }}
 
 on:
   schedule:
@@ -16,11 +13,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-      with:
-        node-version: '16.x'
-        cache: 'npm'
-    - run: npx playwright install firefox --with-deps
-    - run: npm install -D @playwright/test
-    - run: npm test
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+          cache: 'npm'
+      env:
+        TELEGRAM_BOT_API: ${{ secrets.TELEGRAM_BOT_API }}
+        CHAT_ID: ${{ secrets.CHAT_ID }}
+      - run: npx playwright install firefox --with-deps
+      - run: npm install -D @playwright/test
+      - run: npm test
