@@ -1,4 +1,7 @@
 import { PlaywrightTestConfig } from '@playwright/test';
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 const config: PlaywrightTestConfig = {
     projects: [
@@ -23,7 +26,7 @@ const config: PlaywrightTestConfig = {
             }
         }
     ],
-    reporter: [[process.env.CI ? 'github' : 'list'], ['json', { outputFile: 'results.json' }]],
+    reporter: [[process.env.CI ? 'github' : 'list'], ['./_support/telegram-reporter.ts']],
     testDir: './tests',
 }
 export default config;

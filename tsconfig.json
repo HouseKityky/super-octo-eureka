@@ -1,0 +1,30 @@
+{
+  "ts-node": {
+    "files": true,
+    "emit": true,
+    "compilerHost": true
+  },
+  "compilerOptions": {
+    "charset": "utf8",
+    "forceConsistentCasingInFileNames": true,
+    "newLine": "lf",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUnusedParameters": true,
+    "rootDir": "./",
+    "strict": true,
+    "declaration": true,
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "outDir": "out",
+    "skipLibCheck": true,
+    "target": "es2019",
+    "allowSyntheticDefaultImports": true
+  },
+  "exclude": [
+    "node_modules",
+    "tests",
+    "*.config.ts",
+    "out"
+  ]
+}
