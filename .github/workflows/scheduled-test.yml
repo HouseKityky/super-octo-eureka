@@ -18,9 +18,9 @@ jobs:
         with:
           node-version: '16.x'
           cache: 'npm'
-      env:
-        TELEGRAM_BOT_API: ${{ secrets.TELEGRAM_BOT_API }}
-        CHAT_ID: ${{ secrets.CHAT_ID }}
+        env:
+          TELEGRAM_BOT_API: ${{ secrets.TELEGRAM_BOT_API }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
       - run: npx playwright install firefox --with-deps
       - run: npm install -D @playwright/test
       - run: npm test
