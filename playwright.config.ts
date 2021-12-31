@@ -26,7 +26,7 @@ const config: PlaywrightTestConfig = {
             }
         }
     ],
-    reporter: process.env.CI ? 'github' : 'list',
+    reporter: [[process.env.CI ? 'github' : 'list'], ['./_support/telegram-reporter.ts']],
     testDir: './tests',
 }
 export default config;

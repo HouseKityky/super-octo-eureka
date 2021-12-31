@@ -8,6 +8,8 @@ on:
 jobs:
   test:
 
+    environment: CI
+
     runs-on: ubuntu-latest
 
     steps:
@@ -16,9 +18,11 @@ jobs:
         with:
           node-version: '16.x'
           cache: 'npm'
-      - run: npx playwright install firefox --with-deps
+      - name: Firefox Desktop
         env:
           TELEGRAM_BOT_API: ${{ secrets.TELEGRAM_BOT_API }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
-      - run: npm install -D @playwright/test
-      - run: npm test
+      - run: |
+          npx playwright install firefox --with-deps
+          npm install -D @playwright/test
+          npm test
