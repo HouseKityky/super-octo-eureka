@@ -11,13 +11,8 @@ class TelegramBot {
         this.groupId = telegramConfig.ChatId;
     }
 
-    private initializeBot() {
-        return new Bot(this.apiToken);
-    }
-
-    public async sendTestStatus(text: string) {
-        const bot = this.initializeBot();
-
+    async sendTestStatus(text: string) {
+        const bot = new Bot(this.apiToken);
         await bot.api.sendMessage(this.groupId, text)
     }
 }
