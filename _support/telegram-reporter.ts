@@ -1,6 +1,6 @@
 import telegramConfig from '../telegram.config';
-import { Reporter } from '@playwright/test/reporter';
-import { Bot } from 'grammy'
+import { TestCase, TestResult, FullResult, Reporter } from '@playwright/test/reporter';
+import { Bot } from 'grammy';
 
 class TelegramBot {
     apiToken: string;
@@ -11,26 +11,38 @@ class TelegramBot {
         this.groupId = telegramConfig.ChatId;
     }
 
-    async sendTestStatus(text: string) {
-        const bot = new Bot(this.apiToken);
-        await bot.api.sendMessage(this.groupId, text)
+    async sendTestStatus(status: string ): Promise<void> {
+        if (status == 'passed') {
+            return;
+        }
+
+        if (status == 'failed' || status == 'timedout') {
+            const bot = new Bot(this.apiToken);
+            await bot.api.sendMessage(this.groupId, `Test run status: ${status}`);
+
+            return;
+        }
+
+        return;
     }
 }
 
 class TelegramReporter implements Reporter {
 
-    onTestBegin(test: { title: any; }) {
-        console.log(`Starting test ${test.title}`);
+    onTestBegin?({ title }: TestCase, { startTime }: TestResult): void {
+        console.log(`Starting test ${ title }, ${ startTime }`);
     }
 
-    onTestEnd(test: { title: any; }, result: { status: any; }) {
-        console.log(`Finished test ${test.title}: ${result.status}`);
+    onTestEnd?({title}: TestCase, { status }: TestResult): void {
+        console.log(`Finished test ${ title }: ${ status }`);
     }
 
-    async onEnd(result: { status: any; }) {
-        console.log(`Finished the run: ${result.status}`);
+    async onEnd?({ status }: FullResult): Promise<void> {
+
         const bot = new TelegramBot();
-        await bot.sendTestStatus(`${result.status}`);
+        await bot.sendTestStatus(status);
+
+        console.log(`Finished the run: ${status}`);
     }
 }
 export default TelegramReporter;
