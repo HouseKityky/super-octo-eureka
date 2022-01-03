@@ -14,18 +14,6 @@ test('Покрывала нет', async ({ page }) => {
 });
 
 // npx playwright test -g "Скамейки нет" --project="FireFox Desktop Headed"
-test('Скамейки нет', async ({ page }) => {
-  const productPage = new ProductPage(page);
-
-  await page.goto(
-      '/ua/uk/p/hemnes-hemnes-lavka-biliy-50223625/'
-  );
-
-  await productPage.checkAvailabilty();
-
-});
-
-// npx playwright test -g "Скамейки нет" --project="FireFox Desktop Headed"
 test('Коврика нет', async ({ page }) => {
   const productPage = new ProductPage(page);
 
