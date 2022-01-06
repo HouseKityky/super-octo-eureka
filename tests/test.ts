@@ -13,12 +13,11 @@ test('Покрывала нет', async ({ page }) => {
 
 });
 
-// npx playwright test -g "Скамейки нет" --project="FireFox Desktop Headed"
-test('Коврика нет', async ({ page }) => {
+test('Коробки нет', async ({ page }) => {
   const productPage = new ProductPage(page);
 
   await page.goto(
-      '/ua/uk/p/baggmuck-baggmukk-kilimok-dlya-vzuttya-dlya-primishchennya-vulici-siriy-60329711/'
+      '/ua/uk/p/sockerbit-sokkerbit-korobka-na-kolishchatkah-iz-krishkoyu-biliy-s09207572/'
   );
 
   await productPage.checkAvailabilty();
