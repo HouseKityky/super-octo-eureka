@@ -23,3 +23,17 @@ test('Коробки нет', async ({ page }) => {
   await productPage.checkAvailabilty();
 
 });
+
+
+test('Кашпо нет', async ({ page }) => {
+  const productPage = new ProductPage(page);
+
+  await page.goto(
+      'uk/p/bittergurka-bittergurka-kashpo-biliy-80285787/'
+  );
+
+  await productPage.checkAvailabilty();
+
+});
+
+
