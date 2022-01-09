@@ -13,3 +13,4 @@ export class ProductPage {
         await expect(this.notAvailableMark).toBeVisible();
     }
 }
+
