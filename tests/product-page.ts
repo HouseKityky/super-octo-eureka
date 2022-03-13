@@ -6,7 +6,7 @@ export class ProductPage {
 
     constructor(page: Page) {
         this.page = page;
-        this.notAvailableMark = page.locator('text=Немає в наявності');
+        this.notAvailableMark = page.locator('text=Шановні покупці! Наразі немає можливості сплатити замовлення на сайті. Магазин IKEA та пункти видачі замовлень зачинені. Просимо вибачити за незручності.');
     }
 
     async checkAvailabilty(){
